@@ -21,7 +21,7 @@ So it may change a lot before it's stable version released.
 - `Zilliqa-JS` is a basic library that contains crypto algos, and basic utils.
 - `Laksa` is a framework that provides more features than `Zilliqa-JS`.
 - `Laska` use "mono-repo" that devides the repo to multiple sub packages. Developers may customize their project using different packages on their demands.
-- `Laksa` will grow as the community grows, not just `Javascript`, and more language support join the `Laksa` family.
+- `Laksa` will grow as the community grows, not just `Javascript`, and more language support will join the `Laksa` family.
 
 ## How to Use?
 
