@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "commit": "git add .&&git commit"
+  },
+  "devDependencies": {
+    "vuepress": "^0.14.4"
+  }
+}
