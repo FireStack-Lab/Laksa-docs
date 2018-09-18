@@ -78,3 +78,5 @@ Now we summerize a little bit.
 - Initialize it with `new` syntax, with or without provider url is optional.
 - You can set provider using `setProvider()` function, whenever you want to change the provider url
 - `Laksa` use Promises as network function returned, so we use async call then resolve results
+
+## Create a wallet for Zilliqa
