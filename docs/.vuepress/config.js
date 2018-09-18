@@ -15,6 +15,8 @@ module.exports = {
     }
   },
   themeConfig: {
+    sidebarDepth: 3,
+    displayAllHeaders: true,
     activeHeaderLinks: true,
     locales: {
       "/": {
@@ -33,7 +35,10 @@ module.exports = {
           { text: "Guide", link: "/guide/" },
           { text: "External", link: "https://google.com" }
         ],
-        sidebar: "auto"
+        sidebar: {
+          "/guide/": ["", "QuickTutorial"],
+          "/": [""]
+        }
       },
       "/zh/": {
         // 多语言下拉菜单的标题
