@@ -22,5 +22,5 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:FireStack-Lab/Laksa-docs.git master:gh-pages
 # git push -f git@github.com:FireStack-Lab/Laksa-docs.git master
-git push
+git push -f
 cd -
