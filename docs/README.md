@@ -9,7 +9,9 @@ Laksa is a developer tools that interigate with Zilliqa-BlockChain.
 
 ## Warning
 
+::: warning
 This project is under developement and updated frequently, including `test scripts` and `dependencies`.
+:::
 
 So it may change a lot before it's stable version released.
 
