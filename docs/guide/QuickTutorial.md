@@ -79,9 +79,9 @@ Now we summerize a little bit.
 - You can set provider using `setProvider()` function, whenever you want to change the provider url
 - `Laksa` use Promises as network function returned, so we use async call then resolve results
 
-## Create a account for Zilliqa
+## Create an account for Zilliqa
 
-Just like real wallet in the real world, you can store a set of credit cards to it. A BlockChain Wallet can store many BlockChain Account.
+Just like real wallet in the real world, you can store a set of credit cards to it. A BlockChain Wallet can store many BlockChain Accounts.
 
 BlockChain Account is a basic and important part to the BlockChain Eco-Systems.A BlockChain Account, will contains a pair of keys and an address. We simplify the explanations, like these:
 
@@ -90,7 +90,7 @@ BlockChain Account is a basic and important part to the BlockChain Eco-Systems.A
 
 - **Public Key**: A key use algo methods calculated from your Private Key, it is like your public ID that express yourself, to tell third party application or transaction that who they might be dealing with. Public Key usually appears in most transaction initialization.
 
-- **Address**: It is easy to understand, that it is like your bank account number or email address, people can send money to your address without worry that they send to other person.
+- **Address**: It is easy to understand, that it is like your bank account number or email address, people can send money to your address without worry that they send to wrong person.
 
 With `Laksa`, you can create wallet very easily.
 Since you have imported/required the `Laksa` library in your App.
@@ -165,7 +165,7 @@ So, you had created an account, using `Laksa.wallet.createAccount()`. As you may
 
 Wow... it seems a lot of them. We know, and we try to simplify them in the future. But we still suggest you should get to know some of them. All these features you can find them in the API Reference
 
-### **The `accounts` array**
+### The `accounts` array
 
 - It is a builtin array inside `Laksa.wallet`.
 - It is used to store the accounts you have created or imported to the wallet.
@@ -274,7 +274,7 @@ Now summerize with `accounts`:
 However each time you manipulate with array, it may write more code to your features you may want.
 We provide some useful functions to do the help.
 
-### ** Get account object by `address` or `index`**
+### Get account object by `address` or `index`
 
 These two functions provide you to access the `accounts` array to get the account using `address` or `index`
 
@@ -457,7 +457,7 @@ and the Private Key is decrypted and become the original one
 But there are more things added to it ,like `id`,`LastEncryptedBy`,`version`,`updatedTime`.
 We will explain these things in further document.
 
-### **Create multiple accounts**
+### Create multiple accounts
 
 Like in the real world, you can apply to different banks to multiple bank account to deposit or receive money.
 Thus you have multiple accounts.
@@ -530,7 +530,7 @@ the output will look like this:
 And remember, `index` to each account will be calculated automaticly,
 if `wallet.accounts` array already stored some accounts
 
-### **Encrypt and decrypt all accounts**
+### Encrypt and decrypt all accounts
 
 `Laksa` provides encrypt and decrypt all accounts functions.
 
@@ -579,6 +579,60 @@ wallet.decryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
 
 // log them
 console.log(wallet.accounts);
+```
+
+### Remove account from wallet
+
+If you have a account wanted to be removed from wallet.
+
+Use `wallet.removeOneAccountByAddress` or `wallet.removeOneAccountByIndex`
+
+Remember, `*ByAddress` is more safely than `*ByIndex`
+
+`wallet.removeOneAccountByAddress`:
+
+```javascript
+// create an account and remove it later
+const an_account_to_be_added_and_remove = wallet.createAccount();
+
+// get address of the account
+const { address } = an_account_to_be_added_and_remove;
+
+// check the account is added?
+const is_the_account_added = wallet.getAccountByAddress(address);
+
+console.log(is_the_account_added);
+
+// remove the account using the removeOneAccountByAddress
+wallet.removeOneAccountByAddress(address);
+
+// check the account is still there?
+const is_the_account_there = wallet.getAccountByAddress(address);
+
+console.log(is_the_account_there);
+```
+
+`wallet.removeOneAccountByIndex`:
+
+```javascript
+// create an account and remove it later
+const an_account_to_be_added_and_remove_byIndex = wallet.createAccount();
+
+// get index of the account
+const { index } = an_account_to_be_added_and_remove_byIndex;
+
+// check the account is added?
+const is_the_account_added_byIndex = wallet.getAccountByIndex(index);
+
+console.log(is_the_account_added_byIndex);
+
+// remove the account using the removeOneAccountByIndex
+wallet.removeOneAccountByIndex(index);
+
+// check the account is still there?
+const is_the_account_there_byIndex = wallet.getAccountByIndex(index);
+
+console.log(is_the_account_there_byIndex);
 ```
 
 ### Clean up your wallet
