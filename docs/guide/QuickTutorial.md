@@ -90,7 +90,7 @@ BlockChain Account is a basic and important part to the BlockChain Eco-Systems.A
 
 - **Public Key**: A key use algo methods calculated from your Private Key, it is like your public ID that express yourself, to tell third party application or transaction that who they might be dealing with. Public Key usually appears in most transaction initialization.
 
-- **Address**: It is easy to understand, that it is like your bank account number or email address, people can send money to your address without worry that they send to wrong person.
+- **Address**: It is easy to understand, that it is like your bank account number or email address, people can send money to your address without worrying that they send to wrong person.
 
 With `Laksa`, you can create wallet very easily.
 Since you have imported/required the `Laksa` library in your App.
@@ -175,11 +175,13 @@ Wow... it seems a lot of them. We know, and we try to simplify them in the futur
 
 ::: warning
 The `accounts` array will be upgraded to `Immutable` in the future vesion.
+
 By then, you will only have to modify it using builtin functions.
+
 Or else it will throw some error and terminate the process
 :::
 
-Supposed you have createed an Account from above code. That new account is added to `accounts` , you can easily check it with:
+Supposed you have created an Account from above code. That new account is added to `accounts` , you can easily check it with:
 
 ```javascript
 ...
@@ -643,7 +645,9 @@ Do Not set the `wallet.account` to `[]` directly, see this warning.
 
 ::: warning
 The `accounts` array will be upgraded to `Immutable` in the future vesion.
+
 By then, you will only have to modify it using builtin functions.
+
 Or else it will throw some error and terminate the process
 :::
 

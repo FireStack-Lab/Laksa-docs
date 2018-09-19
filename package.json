@@ -2,6 +2,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "docs:deploy": "./deploy.sh",
     "commit": "git add .&&git commit"
   },
   "devDependencies": {

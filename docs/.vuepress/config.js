@@ -61,7 +61,10 @@ module.exports = {
           { text: "指南", link: "/zh/guide/" },
           { text: "Google", link: "https://google.com" }
         ],
-        sidebar: "auto"
+        sidebar: {
+          "/zh/guide/": ["", "QuickTutorial"],
+          "/zh/": [""]
+        }
       }
     },
     displayAllHeaders: true // 默认值：false
