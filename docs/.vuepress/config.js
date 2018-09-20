@@ -16,7 +16,7 @@ module.exports = {
   },
   themeConfig: {
     sidebarDepth: 3,
-    displayAllHeaders: true,
+    // displayAllHeaders: true,
     activeHeaderLinks: true,
     locales: {
       "/": {
@@ -33,9 +33,16 @@ module.exports = {
         nav: [
           { text: "Intro", link: "/" },
           { text: "Guide", link: "/guide/" },
-          { text: "External", link: "https://google.com" }
+          { text: "API Reference", link: "/api/" }
         ],
         sidebar: {
+          "/api/": [
+            {
+              title: "API Reference",
+              collapsable: false,
+              children: ["", "laksa", "laksa.zil"]
+            }
+          ],
           "/guide/": ["", "QuickTutorial"],
           "/": [""]
         }
@@ -59,14 +66,21 @@ module.exports = {
         nav: [
           { text: "介绍", link: "/zh/" },
           { text: "指南", link: "/zh/guide/" },
-          { text: "Google", link: "https://google.com" }
+          { text: "API文档", link: "/zh/api/" }
         ],
         sidebar: {
+          "/zh/api/": [
+            {
+              title: "Api 文档",
+              collapsable: false,
+              children: ["", "laksa", "laksa.zil"]
+            }
+          ],
           "/zh/guide/": ["", "QuickTutorial"],
           "/zh/": [""]
         }
       }
-    },
-    displayAllHeaders: true // 默认值：false
+    }
+    //displayAllHeaders: true // 默认值：false
   }
 };

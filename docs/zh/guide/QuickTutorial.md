@@ -4,7 +4,7 @@
 
 经过上一章，您应该知道如何在 `NodeJS` 或者 `Html`，安装`Laksa`
 
-如果还没有的话，请回到[安装](/guide/#install)章节查看说明
+如果还没有的话，请回到[安装](/zh/guide/#install)章节查看说明
 
 在这个教程当中,
 
@@ -240,7 +240,7 @@ console.log(walletAcconts)
 
 同时, 地址（`address`）这个字符串也将作为帐号的对象的 key 存在.
 
-这样设计，是为了让地址`address`）也能指向`accounts`数组
+这样设计，是为了让地址（`address`）也能指向`accounts`数组
 
 也许看看代码，你会更容易理解：
 
@@ -280,6 +280,8 @@ console.log(my_account_created);
 我们提供了一些有用的函数来简化操作
 
 ### 通过 `address` 或者 `index`来获得帐号对象
+
+`wallet.getAccountByIndex` 和 `wallet.getAccountByAddress`
 
 这两个函数将提供你访问`accounts`数组，并使用`address` 或者 `index`来获得帐号对象
 
@@ -548,7 +550,7 @@ console.log(I_Have_A_Lot_Of_Account);
 - 同样，`wallet.decryptAllAccounts`函数的行为也是一样。
   同时，批量的加密过程较为复杂，只要当中有一个帐号使用单独的密码加密，解密过程将被中止
 
-::: warning
+::: warning 警告
 我们会在未来版本中优化这些函数
 不过我们还是希望尽可能不要在实际的生产环境中使用批量操作
 最好是对帐号进行**单独的**加解密
@@ -640,7 +642,7 @@ console.log(is_the_account_there_byIndex);
 ::: warning 警告
 `accounts` 数组将会在未来版本中，升级为不可变（ `Immutable`）列表。
 
-届时，你将使用内置的函数对它进行操作。
+届时，你将只能使用内置的函数对它进行操作。
 
 否则，直接对 accounts 进行操作将会报错，并中止处理过程。
 :::
@@ -659,7 +661,7 @@ console.log(wallet.accounts);
 
 ### 更多的功能和细节
 
-这仅是一个简单的教程，旨在想你演示一些`Laksa.wallet`的功能和函数
+这仅是一个简单的教程，旨在向你演示一些`Laksa.wallet`的功能和函数
 
 跟过的功能和细节将在 API 索引文档中呈现
 

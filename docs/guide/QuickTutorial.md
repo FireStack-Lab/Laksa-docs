@@ -278,6 +278,8 @@ We provide some useful functions to do the help.
 
 ### Get account object by `address` or `index`
 
+`wallet.getAccountByIndex` and `wallet.getAccountByAddress`
+
 These two functions provide you to access the `accounts` array to get the account using `address` or `index`
 
 ```javascript
