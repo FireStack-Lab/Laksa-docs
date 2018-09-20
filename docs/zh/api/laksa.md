@@ -5,9 +5,14 @@ Laksa 的主要类
 #### 用法
 
 ```Javascript
-const laksa=require('Laksa')
+const Laksa=require('laksa')
 // 或者
-import laksa from 'Laksa'
+import Laksa from 'laksa'
+
+//初始化
+const laksa=new Laksa('https://api-scilla.zilliqa.com')
+
+laska.*<{Method|Class|Object}>
 ```
 
 #### 子类
@@ -43,7 +48,9 @@ import laksa from 'Laksa'
 
 #### Typed
 
-getProvider ():void =\> provider: Object
+```flow
+getProvider () => provider: object
+```
 
 #### 参数
 
@@ -56,6 +63,7 @@ getProvider ():void =\> provider: Object
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.getProvider();
 
 /**
@@ -89,7 +97,7 @@ HttpProvider {
         xsrfHeaderName: 'X-XSRF-TOKEN',
         maxContentLength: -1,
         validateStatus: [Function: validateStatus],
-        headers: [Object] },
+        headers: [object] },
      interceptors:
       { request: [InterceptorManager],
         response: [InterceptorManager] } } }
@@ -104,7 +112,9 @@ HttpProvider {
 
 #### Typed
 
-getDefaultAccount ():void =\> defaultAccount: String
+```flow
+getDefaultAccount () => defaultAccount: string
+```
 
 #### 参数
 
@@ -112,11 +122,12 @@ getDefaultAccount ():void =\> defaultAccount: String
 
 #### 返回
 
-- `String` 默认 Provider 的 defaultAccount
+- `string` 默认 Provider 的 defaultAccount
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.getDefaultAccount();
 
 //undefined
@@ -130,7 +141,9 @@ Laksa.getDefaultAccount();
 
 #### Typed
 
-getDefaultBlock ():void =\> defaultBlock: String
+```flow
+getDefaultBlock () => defaultBlock: string
+```
 
 #### 参数
 
@@ -138,11 +151,12 @@ getDefaultBlock ():void =\> defaultBlock: String
 
 #### 返回
 
-- `String` 默认 Provider 的 defaultBlock
+- `string` 默认 Provider 的 defaultBlock
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.getDefaultBlock();
 
 //"latest"
@@ -156,7 +170,9 @@ Laksa.getDefaultBlock();
 
 #### Typed
 
-getDefaultProviderUrl ():void =\> url: String
+```flow
+getDefaultProviderUrl () => url: string
+```
 
 #### 参数
 
@@ -164,11 +180,12 @@ getDefaultProviderUrl ():void =\> url: String
 
 #### 返回
 
-- `String` 默认 Provider 的 Url
+- `string` 默认 Provider 的 Url
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.getDefaultProviderUrl();
 
 //localhost:4200
@@ -182,19 +199,22 @@ Laksa.getDefaultProviderUrl();
 
 #### Typed
 
-getLibraryVersion ():void =\> version: String
+```flow
+getLibraryVersion () => version: string
+```
 
 #### 参数
 
-无
+**无**
 
 #### 返回
 
-- `String` 代码库版本号
+- `string` 代码库版本号
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.getLibraryVersion();
 
 //0.0.1
@@ -208,19 +228,41 @@ Laksa.getLibraryVersion();
 
 #### Typed
 
-isConnected ():void =\> Promises\<Boolean\>
+```flow
+isConnected (callback?: void)=> Promises<Error|Boolean>
+```
 
 #### 参数
 
-**无**
+- 1.  `function`- 可选, 回调函数, 第一个参数为 Error 对象，第二个参数为正常返回结果，建议格式如下:
+
+  ```flow
+  function callback(err: Error, data: any): void {
+    if (err) {
+      // do with error
+    }
+    // do with data
+  }
+  ```
 
 #### 返回
 
-- `Promises<Boolean>` 连接状态
+- `Promises<boolean>` 连接状态,报错返回 Error，正常返回 true 或 false
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
+
+// 使用callback获取结果
+Laksa.isConnected({ code: code }, (err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data);
+});
+
+// 使用then返回Promises
 Laksa.isConnected().then(console.log);
 
 // true
@@ -234,13 +276,13 @@ Laksa.isConnected().then(console.log);
 
 #### Typed
 
-setProvider (url:String):void =\> undefined
+```flow
+setProvider (url:string)=> void
+```
 
 #### 参数
 
-| 名称 |  类型  |                                  说明 |
-| :--- | :----: | ------------------------------------: |
-| url  | String | Provider 的 url 地址，http 或者 https |
+- 1.  `string`- 必须, Provider 的 url 地址，http 或者 https
 
 #### 返回
 
@@ -264,7 +306,9 @@ Laksa.setProvider("https://api-scilla.zilliqa.com");
 
 #### Typed
 
-currentProvider :Class
+```flow
+currentProvider :class
+```
 
 #### 参数
 
@@ -277,6 +321,7 @@ currentProvider :Class
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.currentProvider;
 
 /**
@@ -310,7 +355,7 @@ HttpProvider {
         xsrfHeaderName: 'X-XSRF-TOKEN',
         maxContentLength: -1,
         validateStatus: [Function: validateStatus],
-        headers: [Object] },
+        headers: [object] },
      interceptors:
       { request: [InterceptorManager],
         response: [InterceptorManager] } } }
@@ -325,7 +370,9 @@ HttpProvider {
 
 #### Typed
 
-config :Object
+```flow
+config :object<T>
+```
 
 #### 参数
 
@@ -333,15 +380,16 @@ config :Object
 
 #### 返回
 
-- `Object`
-  - **version**: `String`,
-  - **defaultProviderUrl**: `String`,
-  - **defaultBlock**: `String`,
-  - **defaultAccount**: `String`
+- `object`
+  - **version**: `string`,
+  - **defaultProviderUrl**: `string`,
+  - **defaultBlock**: `string`,
+  - **defaultAccount**: `string`
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.config;
 
 /**
@@ -360,7 +408,9 @@ Laksa.config;
 
 #### Typed
 
-providers :Object
+```flow
+providers :object<T>
+```
 
 #### 参数
 
@@ -368,12 +418,13 @@ providers :Object
 
 #### 返回
 
-- `Object`
+- `object`
   - **HttpProvider**: `Class`
 
 #### 用法
 
 ```javascript
+//假设 Laksa 已经初始化
 Laksa.providers;
 
 /**

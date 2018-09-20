@@ -5,9 +5,14 @@ Laksa main class
 #### Usage
 
 ```Javascript
-const laksa=require('Laksa')
+const Laksa=require('laksa')
 // or
-import laksa from 'Laksa'
+import Laksa from 'laksa'
+
+// initialize
+const laksa=new Laksa('https://api-scilla.zilliqa.com')
+
+laska.*<{Method|Class|Object}>
 ```
 
 #### Sub Classes
@@ -43,7 +48,9 @@ get current Provider class
 
 #### Typed
 
-getProvider ():void =\> provider: Object
+```flow
+getProvider () => provider: object
+```
 
 #### params
 
@@ -56,6 +63,7 @@ getProvider ():void =\> provider: Object
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.getProvider();
 
 /**
@@ -89,7 +97,7 @@ HttpProvider {
         xsrfHeaderName: 'X-XSRF-TOKEN',
         maxContentLength: -1,
         validateStatus: [Function: validateStatus],
-        headers: [Object] },
+        headers: [object] },
      interceptors:
       { request: [InterceptorManager],
         response: [InterceptorManager] } } }
@@ -104,7 +112,9 @@ get default account set by default provider
 
 #### Typed
 
-getDefaultAccount ():void =\> defaultAccount: String
+```flow
+getDefaultAccount () => defaultAccount: string
+```
 
 #### params
 
@@ -112,11 +122,12 @@ getDefaultAccount ():void =\> defaultAccount: String
 
 #### Return
 
-- `String` default Account of default provider
+- `string` default Account of default provider
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.getDefaultAccount();
 
 //undefined
@@ -130,7 +141,9 @@ get default block of default provider
 
 #### Typed
 
-getDefaultBlock ():void =\> defaultBlock: String
+```flow
+getDefaultBlock () => defaultBlock: string
+```
 
 #### params
 
@@ -138,11 +151,12 @@ getDefaultBlock ():void =\> defaultBlock: String
 
 #### Return
 
-- `String` default block of default Provider
+- `string` default block of default Provider
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.getDefaultBlock();
 
 //"latest"
@@ -156,7 +170,9 @@ get url of default Provider
 
 #### Typed
 
-getDefaultProviderUrl ():void =\> url: String
+```flow
+getDefaultProviderUrl ()=> url: string
+```
 
 #### params
 
@@ -164,11 +180,12 @@ getDefaultProviderUrl ():void =\> url: String
 
 #### Return
 
-- `String` url of default Provider
+- `string` url of default Provider
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.getDefaultProviderUrl();
 
 //localhost:4200
@@ -182,7 +199,9 @@ get version number of this library
 
 #### Typed
 
-getLibraryVersion ():void =\> version: String
+```flow
+getLibraryVersion () => version: string
+```
 
 #### params
 
@@ -190,11 +209,12 @@ no
 
 #### Return
 
-- `String` version number
+- `string` version number
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.getLibraryVersion();
 
 //0.0.1
@@ -208,19 +228,41 @@ get connection status of current Provider
 
 #### Typed
 
-isConnected ():void =\> Promises\<Boolean\>
+```flow
+isConnected (callback?: void)=> Promises<Error|Boolean>
+```
 
 #### params
 
-**no**
+- 1.`function`- optional, callback function, Error as the first parameter，normal result will be as the second parameter，see examples:
+
+  ```flow
+  function callback(err: Error, data: any): void {
+    if (err) {
+      // do with error
+    }
+    // do with data
+  }
+  ```
 
 #### Return
 
-- `Promises<Boolean>` connection status
+- `Promises<Error|Boolean>` connection status, either Error, true or false
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
+
+// use callback to get the result
+Laksa.isConnected((err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data);
+});
+
+// use then to get the result
 Laksa.isConnected().then(console.log);
 
 // true
@@ -234,13 +276,13 @@ set new Provider to current Provider
 
 #### Typed
 
-setProvider (url:String):void =\> undefined
+```flow
+setProvider (url:string) => void
+```
 
 #### params
 
-| name |  type  |                    description |
-| :--- | :----: | -----------------------------: |
-| url  | String | url of Provider，http or https |
+- 1.  `string`- required, url of Provider，http or https
 
 #### Return
 
@@ -249,6 +291,7 @@ setProvider (url:String):void =\> undefined
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.setProvider("https://api-scilla.zilliqa.com");
 
 //undefined
@@ -264,7 +307,9 @@ return current Provider class
 
 #### Typed
 
+```flow
 currentProvider :Class
+```
 
 #### params
 
@@ -277,6 +322,7 @@ no
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.currentProvider;
 
 /**
@@ -310,7 +356,7 @@ HttpProvider {
         xsrfHeaderName: 'X-XSRF-TOKEN',
         maxContentLength: -1,
         validateStatus: [Function: validateStatus],
-        headers: [Object] },
+        headers: [object] },
      interceptors:
       { request: [InterceptorManager],
         response: [InterceptorManager] } } }
@@ -325,7 +371,9 @@ return config params
 
 #### Typed
 
-config :Object
+```flow
+config :object<T>
+```
 
 #### params
 
@@ -333,15 +381,16 @@ no
 
 #### return
 
-- `Object`
-  - **version**: `String`,
-  - **defaultProviderUrl**: `String`,
-  - **defaultBlock**: `String`,
-  - **defaultAccount**: `String`
+- `object`
+  - **version**: `string`,
+  - **defaultProviderUrl**: `string`,
+  - **defaultBlock**: `string`,
+  - **defaultAccount**: `string`
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.config;
 
 /**
@@ -360,7 +409,9 @@ return providers sub class
 
 #### Typed
 
-providers :Object
+```flow
+providers :object<T>
+```
 
 #### params
 
@@ -368,12 +419,13 @@ no
 
 #### Return
 
-- `Object`
+- `object`
   - **HttpProvider**: `Class`
 
 #### Usage
 
 ```javascript
+//suppose Laksa is initialized
 Laksa.providers;
 
 /**
