@@ -49,7 +49,7 @@ get current Provider class
 #### Typed
 
 ```flow
-getProvider () => provider: object
+getProvider () => provider: Class
 ```
 
 #### params
@@ -247,7 +247,7 @@ isConnected (callback?: void)=> Promises<Error|Boolean>
 
 #### Return
 
-- `Promises<Error|Boolean>` connection status, either Error, true or false
+- `Promises<Error|Boolean>` connection status, otherwise Error
 
 #### Usage
 

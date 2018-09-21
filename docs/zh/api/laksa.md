@@ -49,7 +49,7 @@ laska.*<{Method|Class|Object}>
 #### Typed
 
 ```flow
-getProvider () => provider: object
+getProvider () => provider: Class
 ```
 
 #### 参数
