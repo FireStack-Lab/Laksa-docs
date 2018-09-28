@@ -56,22 +56,18 @@ laksa.zil.<{Method|Object|Class}>
 
 #### Sub Objects
 
-- Laksa.zil.config
-- Laksa.zil.clientVersion
-- Laksa.zil.hashrate
-- Laksa.zil.networkId
-- Laksa.zil.nodeMining
-- Laksa.zli.protocolVersion
+- [Laksa.zil.config](/api/laksa.zil.html#config)
+- [Laksa.zil.clientVersion](/api/laksa.zil.html#clientversion)
+- [Laksa.zil.hashrate](/api/laksa.zil.html#hashrate)
+- [Laksa.zil.networkId](/api/laksa.zil.html#networkid)
+- [Laksa.zil.nodeMining](/api/laksa.zil.html#nodemining)
+- [Laksa.zli.protocolVersion](/api/laksa.zil.html#protocolversion)
 
 ---
 
 ## Methods
 
-::: warning
-This Method is not open tested yet
-
-`DO NOT` use it.
-:::
+---
 
 ### checkCode
 
@@ -81,6 +77,8 @@ This Method is not open tested yet
 `DO NOT` use it.
 :::
 
+---
+
 ### checkCodeTest
 
 ::: warning
@@ -89,6 +87,8 @@ This Method is not open tested yet
 `DO NOT` use it.
 :::
 
+---
+
 ### createMessage
 
 ::: warning
@@ -96,6 +96,8 @@ This Method is not open tested yet
 
 `DO NOT` use it.
 :::
+
+---
 
 ### createTransaction
 
@@ -571,11 +573,47 @@ Laksa.zil.getNetworkId().then(console.log);
 
 ### getNodeMining
 
-::: warning
-This Method is not open tested yet
+Get current node mining status
 
-`DO NOT` use it.
-:::
+#### Typed
+
+```flow
+ getNodeMining(callback?: void)=> Promises<Error|boolean>;
+```
+
+#### parameters
+
+- 1.  `function`- optional, callback function, Error as the first parameter，normal result will be as the second parameter，see examples:
+
+  ```flow
+  function callback(err: Error, data: any): void {
+    if (err) {
+      // do with error
+    }
+    // do with data
+  }
+  ```
+
+#### returns
+
+- `Promises<Error|boolean>` Network mining status boolean, otherwise Error
+
+#### usage
+
+```javascript
+// suppose Laksa is initialized
+
+// use callback to get the result
+Laksa.zil.getNodeMining((err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data);
+});
+
+// use then to return Promises
+Laksa.zil.getNodeMining().then(console.log);
+```
 
 ---
 
@@ -1055,5 +1093,135 @@ Laksa.zil.isConnected((err, data) => {
 // use then to return Promises
 Laksa.zil.isConnected().then(console.log);
 ```
+
+---
+
+## Sub Objects
+
+---
+
+### config
+
+return config params
+
+#### Typed
+
+```flow
+config :object<T>
+```
+
+#### params
+
+no
+
+#### return
+
+- `object`
+  - **version**: `string`,
+  - **defaultProviderUrl**: `string`,
+  - **defaultBlock**: `string`,
+  - **defaultAccount**: `string`
+
+#### Usage
+
+```javascript
+//suppose Laksa is initialized
+Laksa.zil.config;
+
+/**
+{ version: '0.0.1',
+  defaultProviderUrl: 'http://localhost:4200',
+  defaultBlock: 'latest',
+  defaultAccount: undefined }
+ */
+```
+
+---
+
+### clientVersion
+
+::: warning
+This Method is not open tested yet
+
+`DO NOT` use it.
+:::
+
+---
+
+### hashrate
+
+::: warning
+This Method is not open tested yet
+
+`DO NOT` use it.
+:::
+
+---
+
+### networkId
+
+Get Nework Id of current Provider
+
+#### Typed
+
+```flow
+ networkId: Promises<Error|string>;
+```
+
+#### parameters
+
+none
+
+#### returns
+
+- `Promises<Error|string>` Network Id string, otherwise Error
+
+#### usage
+
+```javascript
+// suppose Laksa is initialized
+
+// use then to return Promises
+Laksa.zil.networkId.then(console.log);
+```
+
+---
+
+### nodeMining
+
+Get current node mining status
+
+#### Typed
+
+```flow
+ nodeMining: Promises<Error|boolean>;
+```
+
+#### parameters
+
+none
+
+#### returns
+
+- `Promises<Error|boolean>` Network mining status boolean, otherwise Error
+
+#### usage
+
+```javascript
+// suppose Laksa is initialized
+
+// use then to return Promises
+Laksa.zil.nodeMining.then(console.log);
+```
+
+---
+
+### protocolVersion
+
+::: warning
+This Method is not open tested yet
+
+`DO NOT` use it.
+:::
 
 ---

@@ -92,20 +92,13 @@ BlockChain Account is a basic and important part to the BlockChain Eco-Systems.A
 
 - **Address**: It is easy to understand, that it is like your bank account number or email address, people can send money to your address without worrying that they send to wrong person.
 
-With `Laksa`, you can create wallet very easily.
-Since you have imported/required the `Laksa` library in your App.
-You can now use the `Laksa.wallet` to do the job.
+We introduce `laksa-wallet`, which is a sub-package of `Laksa`.
+By using `laksa-wallet`, you can create wallet and manage your account very easily.
 
 ```javascript
 // require laksa ,initialize
-const Laksa = require("laksa");
-const laksa = new Laksa();
-
-// manually set proivder
-laksa.setProvider("https://scilla-api.zilliqa.com");
-
-// get the wallet sub object from laksa
-const { wallet } = laksa;
+const { Wallet } = require("laksa-wallet");
+const wallet = new Wallet();
 
 // now do the createAccount()
 const newAccount = wallet.createAccount();
@@ -153,6 +146,7 @@ So, you had created an account, using `Laksa.wallet.createAccount()`. As you may
 - getAccountByIndex
 - getCurrentMaxIndex
 - getIndexKeys
+- getWalletAccounts
 - getWalletAddresses
 - getWalletPrivateKeys
 - getWalletPublicKeys
@@ -168,29 +162,20 @@ Wow... it seems a lot of them. We know, and we try to simplify them in the futur
 ### The `accounts` array
 
 - It is a builtin array inside `Laksa.wallet`.
-- It is used to store the accounts you have created or imported to the wallet.
-- All the CRUD operation will go through it directly.
-- It is simply a state management tool, **NOT** permanently storage.
-- We will consider upgrading it to `Immutable List` in the future
-
-::: warning
-The `accounts` array will be upgraded to `Immutable` in the future vesion.
-
-By then, you will only have to modify it using builtin functions.
-
-Or else it will throw some error and terminate the process
-:::
+- It is used to store the `Address` you have created or imported to the wallet.
+- We have upgraded it to `Immutable List`, so use the builtin functions to manage
+- `Immutable List` protect the data within, we don't want any un-controllable mutation to our data.
 
 Supposed you have created an Account from above code. That new account is added to `accounts` , you can easily check it with:
 
 ```javascript
 ...
-// account have been created with code above
+// now use getWalletAccounts to get the accounts
 
-const walletAcconts=wallet.accounts
+const walletAccounts=wallet.getWalletAccounts()
 
 // log it
-console.log(walletAcconts)
+console.log(walletAccounts)
 ```
 
 Now you have result like this:
@@ -236,9 +221,8 @@ Because address to account is the-one-and-only, we can simply use it as a refere
 As you can see, each account object contains an `index`.
 It is exactly pointing the position to the `accounts` array.
 
-Also, `address` string will be it's object key.
+You can use `accounts[0]` to get the address that match the account address you had created
 
-We design it to keep the address can be the reference pointer to the `accounts` array.
 Just show you some code, you can understand easily:
 
 ```javascript
@@ -250,7 +234,7 @@ console.log(address_for_the_account);
 // '9de46b2fe88f1328bd973557568b24ce271cbc97'
 
 // Since you have known the address,you can use address to point to the account object
-const my_account_created = wallet.accounts[address_for_the_account];
+const my_account_created = wallet.getAccountByAddress(address_for_the_account);
 
 console.log(my_account_created);
 // output will be:
@@ -267,14 +251,7 @@ console.log(my_account_created);
  */
 ```
 
-Now summerize with `accounts`:
-
-- it is a simple array,
-- you can use `index` get the address, like `accounts[0]`
-- you can use `address` to get the account object, like `accounts[address]`
-
-However each time you manipulate with array, it may write more code to your features you may want.
-We provide some useful functions to do the help.
+Now you've known how to create an account, and how to locate it
 
 ### Get account object by `address` or `index`
 
@@ -466,7 +443,7 @@ We will explain these things in further document.
 Like in the real world, you can apply to different banks to multiple bank account to deposit or receive money.
 Thus you have multiple accounts.
 
-With `Laksa`, we can create multiple BlockChain Accounts by one single command and save them to the `wallet.accounts` array.
+With `laksa-wallet`, we can create multiple BlockChain Accounts by one single command and save them to the `wallet.accounts` array.
 
 We introduce `wallet.createBatchAccounts`.
 
@@ -532,7 +509,7 @@ the output will look like this:
 ```
 
 And remember, `index` to each account will be calculated automaticly,
-if `wallet.accounts` array already stored some accounts
+if `wallet.accounts` array already stored some addresses
 
 ### Encrypt and decrypt all accounts
 
@@ -572,7 +549,7 @@ const create_My_BatchAccounts = wallet.createBatchAccounts(5);
 wallet.encryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
 
 // log them
-console.log(wallet.accounts);
+console.log(wallet.getWalletAccounts());
 ```
 
 Now all accounts are encrypted. For the decryption part, you can do this:
@@ -582,7 +559,7 @@ Now all accounts are encrypted. For the decryption part, you can do this:
 wallet.decryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
 
 // log them
-console.log(wallet.accounts);
+console.log(wallet.getWalletAccounts());
 ```
 
 ### Remove account from wallet
@@ -643,15 +620,19 @@ console.log(is_the_account_there_byIndex);
 
 If you want your wallet to be cleaned, and remove all accounts that created/imported/stored.
 
-Do Not set the `wallet.account` to `[]` directly, see this warning.
+We mentioned that `accounts` array is `Immutable List`. You won't be able to set the `accounts` directly using like:
 
-::: warning
-The `accounts` array will be upgraded to `Immutable` in the future vesion.
+```javascript
+wallet.accounts = [];
+// or
+wallet.accounts[0] = {};
+```
 
-By then, you will only have to modify it using builtin functions.
+So that accounts that created/imported/encrypted using `laksa-wallet`, can only be accessible with internal builtin functions
 
-Or else it will throw some error and terminate the process
-:::
+Especially when deleting accounts or clean-up your wallet, you will find builtin functions are more safer.
+
+Now, try clean it all up.
 
 We provide a clean-up method to do the job
 
@@ -659,10 +640,16 @@ We provide a clean-up method to do the job
 wallet.cleanAllAccounts();
 
 // all accounts has been cleaned up
-console.log(wallet.accounts);
+console.log(wallet.getWalletAccounts());
 
 // output
-// [< ${number} empty items>]
+// []
+
+// If you try access the `accounts` array
+// You will find a bunch of `undefined`s within
+// We design it to keep the index pointer to formaly created accounts and deleted accounts
+console.log(wallet.accounts);
+//[ undefined,...,undefined ]
 ```
 
 ### More features and details

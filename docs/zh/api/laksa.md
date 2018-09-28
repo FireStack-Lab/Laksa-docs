@@ -27,16 +27,16 @@ laska.*<{Method|Class|Object}>
 - [Laksa.getProvider](/zh/api/laksa.html#getprovider)
 - [Laksa.getDefaultAccount](/zh/api/laksa.html#getdefaultaccount)
 - [Laksa.getDefaultBlock](/zh/api/laksa.html#getdefaultblock)
-- [Laksa.getDefaultProviderUrl](/zh/api/laksa.html#getdefaultproviderUrl)
+- [Laksa.getDefaultProviderUrl](/zh/api/laksa.html#getdefaultproviderurl)
 - [Laksa.getLibraryVersion](/zh/api/laksa.html#getlibraryversion)
 - [Laksa.isConnected](/zh/api/laksa.html#isconnected)
 - [Laksa.setProvider](/zh/api/laksa.html#setprovider)
 
 #### 子对象
 
-- Laksa.currentProvider
-- Laksa.config
-- Laksa.providers
+- [Laksa.currentProvider](/zh/api/laksa.html#currentprovider)
+- [Laksa.config](/zh/api/laksa.html#config)
+- [Laksa.providers](/zh/api/laksa.html#providers)
 
 ---
 

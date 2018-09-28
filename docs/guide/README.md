@@ -9,9 +9,9 @@ Or, in your SPA WebApp,using `React`,`Vue` ,`Angular`,or any other modern WebApp
 
 ## Preparation for dev env, < Required! >
 
-1. make sure that you have `nodejs` version >= 8.0.0
-2. make sure you have upgrade `npm` to latest version
-3. we suggest you use `yarn` instead of `npm`
+1.  make sure that you have `nodejs` version >= 8.0.0
+2.  make sure you have upgrade `npm` to latest version
+3.  we suggest you use `yarn` instead of `npm`
 
 ```bash
 $bash > brew install nodejs # Install nodejs(Mac only)，for Windows user you can download it from nodejs website
@@ -60,19 +60,19 @@ For more `yarn` commands, please refer to:[yarn docs](https://yarnpkg.com/en/doc
 
 If you find it hard, please wait for our release version later. You may download the production version or use directly in CDN.
 
-1. Make sure npm/yarn and nodejs is install correctly, we have to build it manually before we use it in `HTML/script`
+1.  Make sure npm/yarn and nodejs is install correctly, we have to build it manually before we use it in `HTML/script`
 
-2. After you've install all requred env, run the following commands in your command-line
+2.  After you've install all requred env, run the following commands in your command-line
 
 ```bash
-$bash > git clone https://github.com/FireStack-Lab/Laksa.git && cd Laksa && yarn install && yarn build
+$bash > git clone https://github.com/FireStack-Lab/Laksa.git && cd Laksa && yarn install && yarn dist
 ```
 
-3. After all install scripts are executed and finished without Error. You can find 4 files in the `/dist` folder, which are:
+3.  After all install scripts are executed and finished without Error. You can find 4 files in the `/dist` folder, which are:
 
 > `laksa.js` `laksa.js.map` `laksa.browser.js` `laksa.browser.js.map`
 
-4. Copy and paste the `laksa.browser.js` and `laksa.browser.js.map` to your html project folder, and use it in your `<script />` tag
+4.  Copy and paste the `laksa.browser.js` and `laksa.browser.js.map` to your html project folder, and use it in your `<script />` tag
 
 ```HTML
 ...

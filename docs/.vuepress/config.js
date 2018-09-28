@@ -40,7 +40,7 @@ module.exports = {
             {
               title: "API Reference",
               collapsable: false,
-              children: ["", "laksa", "laksa.zil"]
+              children: ["", "laksa", "laksa.zil", "laksa.util"]
             }
           ],
           "/guide/": ["", "QuickTutorial"],
@@ -73,7 +73,7 @@ module.exports = {
             {
               title: "Api 文档",
               collapsable: false,
-              children: ["", "laksa", "laksa.zil"]
+              children: ["", "laksa", "laksa.zil", "laksa.util"]
             }
           ],
           "/zh/guide/": ["", "QuickTutorial"],

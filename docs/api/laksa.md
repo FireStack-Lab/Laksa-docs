@@ -27,16 +27,16 @@ laska.*<{Method|Class|Object}>
 - [Laksa.getProvider](/api/laksa.html#getprovider)
 - [Laksa.getDefaultAccount](/api/laksa.html#getdefaultaccount)
 - [Laksa.getDefaultBlock](/api/laksa.html#getdefaultblock)
-- [Laksa.getDefaultProviderUrl](/api/laksa.html#getdefaultproviderUrl)
+- [Laksa.getDefaultProviderUrl](/api/laksa.html#getdefaultproviderurl)
 - [Laksa.getLibraryVersion](/api/laksa.html#getlibraryversion)
 - [Laksa.isConnected](/api/laksa.html#isconnected)
 - [Laksa.setProvider](/api/laksa.html#setprovider)
 
 #### Sub Objects
 
-- Laksa.currentProvider
-- Laksa.config
-- Laksa.providers
+- [Laksa.currentProvider](/api/laksa.html#currentprovider)
+- [Laksa.config](/api/laksa.html#config)
+- [Laksa.providers](/api/laksa.html#providers)
 
 ---
 

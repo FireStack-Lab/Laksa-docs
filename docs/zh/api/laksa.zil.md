@@ -54,14 +54,14 @@ laksa.zil.*<{Method|Object|Class}>
 - [Laksa.zil.getTxBlockListing](/zh/api/laksa.zil.html#gettxblocklisting)
 - [Laksa.zil.isConnected](/zh/api/laksa.zil.html#isconnected)
 
-#### Sub objects
+#### 子对象
 
-- Laksa.zil.config
-- Laksa.zil.clientVersion
-- Laksa.zil.hashrate
-- Laksa.zil.networkId
-- Laksa.zil.nodeMining
-- Laksa.zli.protocolVersion
+- [Laksa.zil.config](/zh/api/laksa.zil.html#config)
+- [Laksa.zil.clientVersion](/zh/api/laksa.zil.html#clientversion)
+- [Laksa.zil.hashrate](/zh/api/laksa.zil.html#hashrate)
+- [Laksa.zil.networkId](/zh/api/laksa.zil.html#networkid)
+- [Laksa.zil.nodeMining](/zh/api/laksa.zil.html#nodemining)
+- [Laksa.zli.protocolVersion](/zh/api/laksa.zil.html#protocolversion)
 
 ---
 
@@ -576,11 +576,47 @@ Laksa.zil.getNetworkId().then(console.log);
 
 ### getNodeMining
 
-::: warning 警告
-这个方法还没有开放测试
+获取当前节点挖矿状态，返回 boolean
 
-`不要` 使用！
-:::
+#### Typed
+
+```flow
+ getNodeMining(callback?: void)=> Promises<Error|boolean>;
+```
+
+#### 参数
+
+- 1.  `function`- 可选, 回调函数, 第一个参数为 Error 对象，第二个参数为正常返回结果，建议格式如下:
+
+  ```flow
+  function callback(err: Error, data: any): void {
+    if (err) {
+      // do with error
+    }
+    // do with data
+  }
+  ```
+
+#### 返回
+
+- `Promises<Error|boolean>` 当前节点挖矿状态，返回 boolean，报错返回 Error
+
+#### 用法
+
+```javascript
+// 假设 Laksa 已经初始化
+
+// 使用callback获取结果
+Laksa.zil.getNodeMining((err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data);
+});
+
+// 使用then返回Promises
+Laksa.zil.getNodeMining().then(console.log);
+```
 
 ---
 
@@ -1060,5 +1096,135 @@ Laksa.zil.isConnected((err, data) => {
 // 使用then返回Promises
 Laksa.zil.isConnected().then(console.log);
 ```
+
+---
+
+## 子对象
+
+---
+
+### config
+
+返回当前的 config 参数
+
+#### Typed
+
+```flow
+config :object<T>
+```
+
+#### 参数
+
+无
+
+#### 返回
+
+- `object`
+  - **version**: `string`,
+  - **defaultProviderUrl**: `string`,
+  - **defaultBlock**: `string`,
+  - **defaultAccount**: `string`
+
+#### 用法
+
+```javascript
+//假设 Laksa 已经初始化
+Laksa.zil.config;
+
+/**
+{ version: '0.0.1',
+  defaultProviderUrl: 'http://localhost:4200',
+  defaultBlock: 'latest',
+  defaultAccount: undefined }
+ */
+```
+
+---
+
+### clientVersion
+
+::: warning 警告
+这个方法还没有开放测试
+
+`不要` 使用！
+:::
+
+---
+
+### hashrate
+
+::: warning 警告
+这个方法还没有开放测试
+
+`不要` 使用！
+:::
+
+---
+
+### networkId
+
+获取当前 Provider 的网络 ID
+
+#### Typed
+
+```flow
+ networkId: Promises<Error|string>;
+```
+
+#### 参数
+
+无
+
+#### 返回
+
+- `Promises<Error|string>` 当前 Provider 的网络 ID 字符串，报错返回 Error
+
+#### 用法
+
+```javascript
+// 假设 Laksa 已经初始化
+
+// 使用then返回Promises
+Laksa.zil.networkId.then(console.log);
+```
+
+---
+
+### nodeMining
+
+获取当前节点挖矿状态，返回 boolean
+
+#### Typed
+
+```flow
+ nodeMining: Promises<Error|boolean>;
+```
+
+#### 参数
+
+无
+
+#### 返回
+
+- `Promises<Error|boolean>` 当前节点挖矿状态，返回 boolean，报错返回 Error
+
+#### 用法
+
+```javascript
+// 假设 Laksa 已经初始化
+
+// 使用then返回Promises
+Laksa.zil.nodeMining.then(console.log);
+```
+
+---
+
+### protocolVersion
+
+::: warning 警告
+这个方法还没有开放测试
+
+`不要` 使用！
+:::
 
 ---

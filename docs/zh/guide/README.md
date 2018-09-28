@@ -10,9 +10,9 @@
 
 ## 准备开发环境
 
-1. 请确保 `nodejs` 版本 >= 8.0.0,
-2. 请确保已经将 `npm` 升级至最新版本
-3. 我们推荐使用 `yarn` 替代 `npm`
+1.  请确保 `nodejs` 版本 >= 8.0.0,
+2.  请确保已经将 `npm` 升级至最新版本
+3.  我们推荐使用 `yarn` 替代 `npm`
 
 ```bash
 $bash > brew install nodejs # 安装nodejs(Mac用户)，对于Windows用户，你也可以去官网下载
@@ -60,19 +60,19 @@ $bash > yarn add laksa@latest # 你可以安装最新的版本
 
 如果你觉得以下步骤太麻烦，可以等我们的发布版本。到时候，你可以直接下载或者直接在 CDN 路径中引用
 
-1. 请先确保所有环境都已经安装好，包括：npm/yarn 和 nodejs, 我们需要手动构建之后，才能在 `HTML/script`之中使用
+1.  请先确保所有环境都已经安装好，包括：npm/yarn 和 nodejs, 我们需要手动构建之后，才能在 `HTML/script`之中使用
 
-2. 在安装好环境之后，你可以输入以下命令执行.
+2.  在安装好环境之后，你可以输入以下命令执行.
 
 ```bash
-$bash > git clone https://github.com/FireStack-Lab/Laksa.git && cd Laksa && yarn install && yarn build
+$bash > git clone https://github.com/FireStack-Lab/Laksa.git && cd Laksa && yarn install && yarn dist
 ```
 
-3. 当所有命令执行完毕，并且没有出现错误提示的话，会在项目路径的`/dist`下面找到 四个文件，分别是
+3.  当所有命令执行完毕，并且没有出现错误提示的话，会在项目路径的`/dist`下面找到 四个文件，分别是
 
 > `laksa.js` `laksa.js.map` `laksa.browser.js` `laksa.browser.js.map`
 
-4. 复制`laksa.browser.js` 和 `laksa.browser.js.map` ，粘贴到你的 html 项目路径中, 并在 `<script />` 标签内引用他。
+4.  复制`laksa.browser.js` 和 `laksa.browser.js.map` ，粘贴到你的 html 项目路径中, 并在 `<script />` 标签内引用他。
 
 ```HTML
 ...
