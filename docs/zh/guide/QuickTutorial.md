@@ -18,7 +18,7 @@
 ```javascript
 // 如果在更高级一些的Javascript的运行环境
 // 你可以使用 `import Laksa from 'laksa'`
-const Laksa = require("laksa");
+const Laksa = require('laksa')
 ```
 
 2.  对 `Laksa` 初始化
@@ -27,21 +27,26 @@ const Laksa = require("laksa");
 // Laska 是一个类，同时也是构造函数.
 // 所以你要用 `new` 这个语法来把它初始化.
 // 像这样:
-const laksa = new Laksa();
+const laksa = new Laksa()
 
 // 如果你将 "http/https url" 作为参数, 将会同时给Laska设置HttpProvider,
 // 当然在后文，你会发现使用setProvider也会很方便.
-const laksa = new Laksa("https://api-scilla.zilliqa.com");
+const laksa = new Laksa('https://api-scilla.zilliqa.com')
 ```
 
-3.  设置 Provider 为`TestNet`
+3.  设置 NodeProvider 为`TestNet`,并且设置 ScillaProvider 为`ScillaRunner`
 
 ```javascript
 // 当你做完了上一步，你就可以使用大部分Laksa的能力了
 // 不过如果你像连接到Zilliqa的TestNet，使用网络功能
-// 就必须为Laksa设置Provider，像这样
+// 就必须为Laksa设置NodeProvider，像这样
 
-laksa.setProvider("https://api-scilla.zilliqa.com");
+laksa.setNodeProvider("https://api-scilla.zilliqa.com");
+
+// 我们使用远端的scillarunner作为智能合约代码的检查工具
+// 最好使用这里的方法进行设置
+
+laksa.setScillaProvider('https://scilla-runner.zilliqa.com)
 ```
 
 4.  检查 Provider 连接性
@@ -51,7 +56,7 @@ laksa.setProvider("https://api-scilla.zilliqa.com");
 // 如果我们正确的设置了provider
 // 就可以使用isConnected()函数来查看是否已经正确连接
 // 在Laksa, 所有的网络函数返回的结果将是Promises，因此你需要异步解析结果
-laksa.isConnected().then(console.log);
+laksa.isConnected().then(console.log)
 
 // 打印的结果如果为true，说明你正确连接了,
 // 那么恭喜你! 你已经上链了！
@@ -61,16 +66,16 @@ laksa.isConnected().then(console.log);
 
 ```javascript
 // 1.  引入 `Laksa` 库文件.
-const Laksa = require("laksa");
+const Laksa = require('laksa')
 
 // 2.  对 `Laksa` 初始化
-const laksa = new Laksa();
+const laksa = new Laksa()
 
 // 3.  设置 Provider 为`TestNet`
-laksa.setProvider("https://api-scilla.zilliqa.com");
+laksa.setNodeProvider('https://api-scilla.zilliqa.com')
 
 // 4.  检查Provider连接性
-laksa.isConnected().then(console.log);
+laksa.isConnected().then(console.log)
 ```
 
 让我们来稍微小结一下。
@@ -100,20 +105,20 @@ laksa.isConnected().then(console.log);
 
 ```javascript
 // 引入 laksa ,初始化
-const Laksa = require("laksa");
-const laksa = new Laksa();
+const Laksa = require('laksa')
+const laksa = new Laksa()
 
 // 手动设置Provider
-laksa.setProvider("https://scilla-api.zilliqa.com");
+laksa.setNodeProvider('https://scilla-api.zilliqa.com')
 
 // 提取wallet子类
-const { wallet } = laksa;
+const { wallet } = laksa
 
 // 使用createAccount()创建帐号
-const newAccount = wallet.createAccount();
+const newAccount = wallet.createAccount()
 
 // 检查帐号是否被创建
-console.log(newAccount);
+console.log(newAccount)
 ```
 
 打印出来的结果应该像这样:
@@ -246,16 +251,16 @@ console.log(walletAcconts)
 
 ```javascript
 // 你可以像使用一般的数组一样，采用指针获得帐号地址
-const address_for_the_account = wallet.accounts[0];
+const address_for_the_account = wallet.accounts[0]
 
-console.log(address_for_the_account);
+console.log(address_for_the_account)
 // 打印的结果将是:
 // '9de46b2fe88f1328bd973557568b24ce271cbc97'
 
 // 当然了，你知道了地址，也就可以通过地址来获得具体的帐号
-const my_account_created = wallet.accounts[address_for_the_account];
+const my_account_created = wallet.accounts[address_for_the_account]
 
-console.log(my_account_created);
+console.log(my_account_created)
 // 打印的结果将是:
 /*
 {
@@ -287,9 +292,9 @@ console.log(my_account_created);
 
 ```javascript
 // 我们假设你知道了account存储的指针index
-const accountQueryByIndex = wallet.getAccountByIndex(0);
+const accountQueryByIndex = wallet.getAccountByIndex(0)
 
-console.log(accountQueryByIndex);
+console.log(accountQueryByIndex)
 // 打印的结果将是:
 /*
 {
@@ -306,9 +311,9 @@ console.log(accountQueryByIndex);
 // 我们假设你知道了存储的帐号地址
 const accountQueryByAddress = wallet.getAccountByAddress(
   address_for_the_account
-);
+)
 
-console.log(accountQueryByAddress);
+console.log(accountQueryByAddress)
 // 打印的结果将是:
 /*
  {
@@ -327,7 +332,7 @@ console.log(accountQueryByAddress);
 你可以对比一下两个函数获得的结果，结果将返回`true`
 
 ```javascript
-console.log(Object.is(accountQueryByIndex, accountQueryByAddress));
+console.log(Object.is(accountQueryByIndex, accountQueryByAddress))
 // 打印结果将是:
 // true
 ```
@@ -353,17 +358,15 @@ console.log(Object.is(accountQueryByIndex, accountQueryByAddress));
 
 wallet.encryptAccountByAddress(
   address_for_the_account,
-  "I(dont+want@Any#Body%see^this:233333"
-);
+  'I(dont+want@Any#Body%see^this:233333'
+)
 
 // 检查一下帐号是否正确加密了
 
-const account_is_encrypted = wallet.getAccountByAddress(
-  address_for_the_account
-);
+const account_is_encrypted = wallet.getAccountByAddress(address_for_the_account)
 
 // 打印一下结果
-console.log(account_is_encrypted);
+console.log(account_is_encrypted)
 ```
 
 打印的结果就像这样
@@ -424,17 +427,15 @@ console.log(account_is_encrypted);
 
 wallet.decryptAccountByAddress(
   address_for_the_account,
-  "I(dont+want@Any#Body%see^this:233333"
-);
+  'I(dont+want@Any#Body%see^this:233333'
+)
 
 // 现在看看帐号是不是被正确解密了
 
-const account_is_decrypted = wallet.getAccountByAddress(
-  address_for_the_account
-);
+const account_is_decrypted = wallet.getAccountByAddress(address_for_the_account)
 
 // 看看打印的结果
-console.log(account_is_decrypted);
+console.log(account_is_decrypted)
 ```
 
 打印的结果将像这样
@@ -475,8 +476,8 @@ console.log(account_is_decrypted);
 // 传入一个数字到createBatchAccounts函数中
 // 数字将是大于等于1的整数
 
-const I_Have_A_Lot_Of_Account = wallet.createBatchAccounts(5);
-console.log(I_Have_A_Lot_Of_Account);
+const I_Have_A_Lot_Of_Account = wallet.createBatchAccounts(5)
+console.log(I_Have_A_Lot_Of_Account)
 ```
 
 打印的结果就像这样:
@@ -560,23 +561,23 @@ console.log(I_Have_A_Lot_Of_Account);
 
 ```javascript
 // 假设你要创建一批帐号
-const create_My_BatchAccounts = wallet.createBatchAccounts(5);
+const create_My_BatchAccounts = wallet.createBatchAccounts(5)
 
 // 批量加密，密码使用同样的一个字符串
-wallet.encryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
+wallet.encryptAllAccounts('I(dont+want@Any#Body%see^this:233333')
 
 // 打印出来
-console.log(wallet.accounts);
+console.log(wallet.accounts)
 ```
 
 现在所有帐号都加密了，到了解密部分，你可以这样做:
 
 ```javascript
 // 批量解密，传入密码字符串
-wallet.decryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
+wallet.decryptAllAccounts('I(dont+want@Any#Body%see^this:233333')
 
 // 打印他们
-console.log(wallet.accounts);
+console.log(wallet.accounts)
 ```
 
 ### 从钱包中移除帐号
@@ -591,46 +592,46 @@ console.log(wallet.accounts);
 
 ```javascript
 // 创建一个帐号，等会移除它
-const an_account_to_be_added_and_remove = wallet.createAccount();
+const an_account_to_be_added_and_remove = wallet.createAccount()
 
 // 获得帐号的地址
-const { address } = an_account_to_be_added_and_remove;
+const { address } = an_account_to_be_added_and_remove
 
 // 检查帐号是否加入了accounts数组
-const is_the_account_added = wallet.getAccountByAddress(address);
+const is_the_account_added = wallet.getAccountByAddress(address)
 
-console.log(is_the_account_added);
+console.log(is_the_account_added)
 
 // 使用removeOneAccountByAddress，传入地址
-wallet.removeOneAccountByAddress(address);
+wallet.removeOneAccountByAddress(address)
 
 // 再看看帐号还在不在
-const is_the_account_there = wallet.getAccountByAddress(address);
+const is_the_account_there = wallet.getAccountByAddress(address)
 
-console.log(is_the_account_there);
+console.log(is_the_account_there)
 ```
 
 `wallet.removeOneAccountByIndex`:
 
 ```javascript
 // 创建一个帐号，等会移除它
-const an_account_to_be_added_and_remove_byIndex = wallet.createAccount();
+const an_account_to_be_added_and_remove_byIndex = wallet.createAccount()
 
 // 获得帐号的指针
-const { index } = an_account_to_be_added_and_remove_byIndex;
+const { index } = an_account_to_be_added_and_remove_byIndex
 
 // 检查帐号是否添加到accounts数组
-const is_the_account_added_byIndex = wallet.getAccountByIndex(index);
+const is_the_account_added_byIndex = wallet.getAccountByIndex(index)
 
-console.log(is_the_account_added_byIndex);
+console.log(is_the_account_added_byIndex)
 
 // 使用removeOneAccountByIndex，传入指针
-wallet.removeOneAccountByIndex(index);
+wallet.removeOneAccountByIndex(index)
 
 // 检查帐号是否还在不在？
-const is_the_account_there_byIndex = wallet.getAccountByIndex(index);
+const is_the_account_there_byIndex = wallet.getAccountByIndex(index)
 
-console.log(is_the_account_there_byIndex);
+console.log(is_the_account_there_byIndex)
 ```
 
 ### 清空你的钱包
@@ -650,10 +651,10 @@ console.log(is_the_account_there_byIndex);
 我们提供了一个清空方法来完成这个工作
 
 ```javascript
-wallet.cleanAllAccounts();
+wallet.cleanAllAccounts()
 
 // 所有帐号将被清空
-console.log(wallet.accounts);
+console.log(wallet.accounts)
 
 // 打印结果将是
 // [< ${number} empty items>]

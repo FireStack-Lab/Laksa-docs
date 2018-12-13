@@ -18,7 +18,7 @@ In this tutorial,
 ```javascript
 // you can use `import Laksa from 'laksa'`
 // if you use more advanced javascript envirorment
-const Laksa = require("laksa");
+const Laksa = require('laksa')
 ```
 
 2.  Initialize the `Laksa`
@@ -27,20 +27,25 @@ const Laksa = require("laksa");
 // Laska is a constructor/class.
 // It means you have to use `new` syntax to initialize it.
 // Do it as folows:
-const laksa = new Laksa();
+const laksa = new Laksa()
 
 // If you set "http/https url" as argument, you will set HttpProvider to Laksa,
 // which is the same we use setProvider in next step.
-const laksa = new Laksa("https://api-scilla.zilliqa.com");
+const laksa = new Laksa('https://api-scilla.zilliqa.com')
 ```
 
-3.  Set Provider to the `TestNet`
+3.  Set NodeProvider to the `TestNet`, and set ScillaProvider to `ScillaRunner`
 
 ```javascript
 // After you done last step, you can use most of Laksa's abilities.
 // But if you want to connect to the TestNet and use network functions of Laksa
-// Set Provider is a must. You can simply do as follows:
-laksa.setProvider("https://api-scilla.zilliqa.com");
+// Set Node Provider is a must. You can simply do as follows:
+laksa.setNodeProvider('https://api-scilla.zilliqa.com')
+
+// We use remote scilla-runner to check with the Smart Contract Code,
+// We'd better do it here
+
+laksa.setScillaProvider('https://scilla-runner.zilliqa.com')
 ```
 
 4.  Check provider connection
@@ -50,7 +55,7 @@ laksa.setProvider("https://api-scilla.zilliqa.com");
 // If we had set the provider correctly,
 // We can use isConnected() function to see if we connected
 // In Laksa, all result using network functions will be returned as Promises
-laksa.isConnected().then(console.log);
+laksa.isConnected().then(console.log)
 
 // if you can see `true` in you console,
 // Then Congratulations! You are 'On-Chain' now
@@ -60,16 +65,16 @@ laksa.isConnected().then(console.log);
 
 ```javascript
 // 1.  Simply require `Laksa` library.
-const Laksa = require("laksa");
+const Laksa = require('laksa')
 
 // 2.  Initialize the `Laksa`
-const laksa = new Laksa();
+const laksa = new Laksa()
 
 // 3.  Set Provider to the `TestNet`
-laksa.setProvider("https://api-scilla.zilliqa.com");
+laksa.setNodeProvider('https://api-scilla.zilliqa.com')
 
 // 4.  Check provider connection
-laksa.isConnected().then(console.log);
+laksa.isConnected().then(console.log)
 ```
 
 Now we summerize a little bit.
@@ -97,14 +102,14 @@ By using `laksa-wallet`, you can create wallet and manage your account very easi
 
 ```javascript
 // require laksa ,initialize
-const { Wallet } = require("laksa-wallet");
-const wallet = new Wallet();
+const { Wallet } = require('laksa-wallet')
+const wallet = new Wallet()
 
 // now do the createAccount()
-const newAccount = wallet.createAccount();
+const newAccount = wallet.createAccount()
 
 // check the account that created
-console.log(newAccount);
+console.log(newAccount)
 ```
 
 You should be able to see the result on console like this:
@@ -227,16 +232,16 @@ Just show you some code, you can understand easily:
 
 ```javascript
 // you can reference the address use normal account index
-const address_for_the_account = wallet.accounts[0];
+const address_for_the_account = wallet.accounts[0]
 
-console.log(address_for_the_account);
+console.log(address_for_the_account)
 // output will be:
 // '9de46b2fe88f1328bd973557568b24ce271cbc97'
 
 // Since you have known the address,you can use address to point to the account object
-const my_account_created = wallet.getAccountByAddress(address_for_the_account);
+const my_account_created = wallet.getAccountByAddress(address_for_the_account)
 
-console.log(my_account_created);
+console.log(my_account_created)
 // output will be:
 /*
 {
@@ -261,9 +266,9 @@ These two functions provide you to access the `accounts` array to get the accoun
 
 ```javascript
 // we assume you have the index that account stored
-const accountQueryByIndex = wallet.getAccountByIndex(0);
+const accountQueryByIndex = wallet.getAccountByIndex(0)
 
-console.log(accountQueryByIndex);
+console.log(accountQueryByIndex)
 // output will be:
 /*
 {
@@ -280,9 +285,9 @@ console.log(accountQueryByIndex);
 // we assume you have the index that account stored
 const accountQueryByAddress = wallet.getAccountByAddress(
   address_for_the_account
-);
+)
 
-console.log(accountQueryByAddress);
+console.log(accountQueryByAddress)
 // output will be:
 /*
  {
@@ -302,7 +307,7 @@ You see two different functions get the same account you want.
 If you compared two result will return `true`.
 
 ```javascript
-console.log(Object.is(accountQueryByIndex, accountQueryByAddress));
+console.log(Object.is(accountQueryByIndex, accountQueryByAddress))
 // output will be:
 // true
 ```
@@ -329,17 +334,15 @@ Let us show you the code directly:
 
 wallet.encryptAccountByAddress(
   address_for_the_account,
-  "I(dont+want@Any#Body%see^this:233333"
-);
+  'I(dont+want@Any#Body%see^this:233333'
+)
 
 // now check if the account is encrypted?
 
-const account_is_encrypted = wallet.getAccountByAddress(
-  address_for_the_account
-);
+const account_is_encrypted = wallet.getAccountByAddress(address_for_the_account)
 
 // see the output
-console.log(account_is_encrypted);
+console.log(account_is_encrypted)
 ```
 
 The output will be looking like this
@@ -401,17 +404,15 @@ Code Time:
 
 wallet.decryptAccountByAddress(
   address_for_the_account,
-  "I(dont+want@Any#Body%see^this:233333"
-);
+  'I(dont+want@Any#Body%see^this:233333'
+)
 
 // now check if the account is encrypted?
 
-const account_is_decrypted = wallet.getAccountByAddress(
-  address_for_the_account
-);
+const account_is_decrypted = wallet.getAccountByAddress(address_for_the_account)
 
 // see the output
-console.log(account_is_decrypted);
+console.log(account_is_decrypted)
 ```
 
 The output will be looking like this
@@ -452,8 +453,8 @@ Just tell the function how many accounts you need
 ```javascript
 // pass the number of accounts to the createBatchAccounts function
 // the number has to be a integer >= 1
-const I_Have_A_Lot_Of_Account = wallet.createBatchAccounts(5);
-console.log(I_Have_A_Lot_Of_Account);
+const I_Have_A_Lot_Of_Account = wallet.createBatchAccounts(5)
+console.log(I_Have_A_Lot_Of_Account)
 ```
 
 the output will look like this:
@@ -543,23 +544,23 @@ Anyway, we just demostrate them to you:
 
 ```javascript
 // Say if you have accounts created
-const create_My_BatchAccounts = wallet.createBatchAccounts(5);
+const create_My_BatchAccounts = wallet.createBatchAccounts(5)
 
 // batch encryption,pass the password string as paramater
-wallet.encryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
+wallet.encryptAllAccounts('I(dont+want@Any#Body%see^this:233333')
 
 // log them
-console.log(wallet.getWalletAccounts());
+console.log(wallet.getWalletAccounts())
 ```
 
 Now all accounts are encrypted. For the decryption part, you can do this:
 
 ```javascript
 // batch encryption,pass the password string as paramater
-wallet.decryptAllAccounts("I(dont+want@Any#Body%see^this:233333");
+wallet.decryptAllAccounts('I(dont+want@Any#Body%see^this:233333')
 
 // log them
-console.log(wallet.getWalletAccounts());
+console.log(wallet.getWalletAccounts())
 ```
 
 ### Remove account from wallet
@@ -574,46 +575,46 @@ Remember, `*ByAddress` is more safely than `*ByIndex`
 
 ```javascript
 // create an account and remove it later
-const an_account_to_be_added_and_remove = wallet.createAccount();
+const an_account_to_be_added_and_remove = wallet.createAccount()
 
 // get address of the account
-const { address } = an_account_to_be_added_and_remove;
+const { address } = an_account_to_be_added_and_remove
 
 // check the account is added?
-const is_the_account_added = wallet.getAccountByAddress(address);
+const is_the_account_added = wallet.getAccountByAddress(address)
 
-console.log(is_the_account_added);
+console.log(is_the_account_added)
 
 // remove the account using the removeOneAccountByAddress
-wallet.removeOneAccountByAddress(address);
+wallet.removeOneAccountByAddress(address)
 
 // check the account is still there?
-const is_the_account_there = wallet.getAccountByAddress(address);
+const is_the_account_there = wallet.getAccountByAddress(address)
 
-console.log(is_the_account_there);
+console.log(is_the_account_there)
 ```
 
 `wallet.removeOneAccountByIndex`:
 
 ```javascript
 // create an account and remove it later
-const an_account_to_be_added_and_remove_byIndex = wallet.createAccount();
+const an_account_to_be_added_and_remove_byIndex = wallet.createAccount()
 
 // get index of the account
-const { index } = an_account_to_be_added_and_remove_byIndex;
+const { index } = an_account_to_be_added_and_remove_byIndex
 
 // check the account is added?
-const is_the_account_added_byIndex = wallet.getAccountByIndex(index);
+const is_the_account_added_byIndex = wallet.getAccountByIndex(index)
 
-console.log(is_the_account_added_byIndex);
+console.log(is_the_account_added_byIndex)
 
 // remove the account using the removeOneAccountByIndex
-wallet.removeOneAccountByIndex(index);
+wallet.removeOneAccountByIndex(index)
 
 // check the account is still there?
-const is_the_account_there_byIndex = wallet.getAccountByIndex(index);
+const is_the_account_there_byIndex = wallet.getAccountByIndex(index)
 
-console.log(is_the_account_there_byIndex);
+console.log(is_the_account_there_byIndex)
 ```
 
 ### Clean up your wallet
@@ -623,9 +624,9 @@ If you want your wallet to be cleaned, and remove all accounts that created/impo
 We mentioned that `accounts` array is `Immutable List`. You won't be able to set the `accounts` directly using like:
 
 ```javascript
-wallet.accounts = [];
+wallet.accounts = []
 // or
-wallet.accounts[0] = {};
+wallet.accounts[0] = {}
 ```
 
 So that accounts that created/imported/encrypted using `laksa-wallet`, can only be accessible with internal builtin functions
@@ -637,10 +638,10 @@ Now, try clean it all up.
 We provide a clean-up method to do the job
 
 ```javascript
-wallet.cleanAllAccounts();
+wallet.cleanAllAccounts()
 
 // all accounts has been cleaned up
-console.log(wallet.getWalletAccounts());
+console.log(wallet.getWalletAccounts())
 
 // output
 // []
@@ -648,7 +649,7 @@ console.log(wallet.getWalletAccounts());
 // If you try access the `accounts` array
 // You will find a bunch of `undefined`s within
 // We design it to keep the index pointer to formaly created accounts and deleted accounts
-console.log(wallet.accounts);
+console.log(wallet.accounts)
 //[ undefined,...,undefined ]
 ```
 

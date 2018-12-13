@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Laksa</title>
+    <meta name="description" content="Zilliqa BlockChain Javascript API">
+    
+    
+    <link rel="preload" href="/Laksa-docs/assets/css/0.styles.c94186b5.css" as="style"><link rel="preload" href="/Laksa-docs/assets/js/app.4cf301fb.js" as="script"><link rel="preload" href="/Laksa-docs/assets/js/10.b9e88e6c.js" as="script"><link rel="prefetch" href="/Laksa-docs/assets/js/2.798e7f11.js"><link rel="prefetch" href="/Laksa-docs/assets/js/3.4ec6e003.js"><link rel="prefetch" href="/Laksa-docs/assets/js/4.f12163e9.js"><link rel="prefetch" href="/Laksa-docs/assets/js/5.bbfb23c1.js"><link rel="prefetch" href="/Laksa-docs/assets/js/6.29329703.js"><link rel="prefetch" href="/Laksa-docs/assets/js/7.16ace59a.js"><link rel="prefetch" href="/Laksa-docs/assets/js/8.5ad2b22d.js"><link rel="prefetch" href="/Laksa-docs/assets/js/9.5625b23f.js"><link rel="prefetch" href="/Laksa-docs/assets/js/11.0c56aa1b.js"><link rel="prefetch" href="/Laksa-docs/assets/js/12.eb9a70ac.js"><link rel="prefetch" href="/Laksa-docs/assets/js/13.4a524952.js"><link rel="prefetch" href="/Laksa-docs/assets/js/14.fb129579.js"><link rel="prefetch" href="/Laksa-docs/assets/js/15.95d44816.js"><link rel="prefetch" href="/Laksa-docs/assets/js/16.387e06d2.js"><link rel="prefetch" href="/Laksa-docs/assets/js/17.8c994772.js"><link rel="prefetch" href="/Laksa-docs/assets/js/18.ab1e666f.js"><link rel="prefetch" href="/Laksa-docs/assets/js/19.6d6adb4b.js"><link rel="prefetch" href="/Laksa-docs/assets/js/20.2d814266.js"><link rel="prefetch" href="/Laksa-docs/assets/js/21.6c2c7072.js"><link rel="prefetch" href="/Laksa-docs/assets/js/22.3208c9f3.js"><link rel="prefetch" href="/Laksa-docs/assets/js/vendors~docsearch.be19280e.js">
+    <link rel="stylesheet" href="/Laksa-docs/assets/css/0.styles.c94186b5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Laksa-docs/" class="home-link router-link-active"><!----> <span class="site-name">Laksa</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Laksa-docs/" class="nav-link">Intro</a></div><div class="nav-item"><a href="/Laksa-docs/guide/" class="nav-link router-link-active">Guide</a></div><div class="nav-item"><a href="/Laksa-docs/api/" class="nav-link">API Reference</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Laksa-docs/guide/Contract.html" class="nav-link router-link-exact-active router-link-active">English</a></li><li class="dropdown-item"><!----> <a href="/Laksa-docs/zh/guide/Contract.html" class="nav-link">简体中文</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Laksa-docs/" class="nav-link">Intro</a></div><div class="nav-item"><a href="/Laksa-docs/guide/" class="nav-link router-link-active">Guide</a></div><div class="nav-item"><a href="/Laksa-docs/api/" class="nav-link">API Reference</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Laksa-docs/guide/Contract.html" class="nav-link router-link-exact-active router-link-active">English</a></li><li class="dropdown-item"><!----> <a href="/Laksa-docs/zh/guide/Contract.html" class="nav-link">简体中文</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/Laksa-docs/guide/" class="sidebar-link">Getting Started</a></li><li><a href="/Laksa-docs/guide/QuickTutorial.html" class="sidebar-link">Quick Tutorial</a></li><li><a href="/Laksa-docs/guide/Transaction.html" class="sidebar-link">Transaction</a></li></ul> </div> <div class="page"> <div class="content"><div class="language-ocaml extra-class"><pre class="language-ocaml"><code><span class="token comment">(* Scilla contract structure *)</span>
+
+
+<span class="token comment">(***************************************************)</span>
+<span class="token comment">(*               Associated library                *)</span>
+<span class="token comment">(***************************************************)</span>
+
+library MyContractLib
+
+
+<span class="token comment">(* Library code block follows *)</span>
+
+
+
+<span class="token comment">(***************************************************)</span>
+<span class="token comment">(*             Contract definition                 *)</span>
+<span class="token comment">(***************************************************)</span>
+
+contract MyContract
+
+<span class="token comment">(* Immutable fields declaration *)</span>
+
+<span class="token punctuation">(</span>vname<span class="token punctuation">_</span>1 <span class="token punctuation">:</span> vtype<span class="token punctuation">_</span>1<span class="token punctuation">,</span>
+ vname<span class="token punctuation">_</span>2 <span class="token punctuation">:</span> vtype<span class="token punctuation">_</span>2<span class="token punctuation">)</span>
+
+<span class="token comment">(* Mutable fields declaration *)</span>
+
+field vname<span class="token punctuation">_</span>1 <span class="token punctuation">:</span> vtype<span class="token punctuation">_</span>1 <span class="token operator">=</span> init<span class="token punctuation">_</span>val<span class="token punctuation">_</span>1
+field vname<span class="token punctuation">_</span>2 <span class="token punctuation">:</span> vtype<span class="token punctuation">_</span>2 <span class="token operator">=</span> init<span class="token punctuation">_</span>val<span class="token punctuation">_</span>2
+
+<span class="token comment">(* Transitions *)</span>
+
+
+<span class="token comment">(* Transition signature *)</span>
+transition firstTransition <span class="token punctuation">(</span>param<span class="token punctuation">_</span>1 <span class="token punctuation">:</span> type<span class="token punctuation">_</span>1<span class="token punctuation">,</span> param<span class="token punctuation">_</span>2 <span class="token punctuation">:</span> type<span class="token punctuation">_</span>2<span class="token punctuation">)</span>
+  <span class="token comment">(* Transition body *)</span>
+
+ <span class="token keyword">end</span>
+
+transition secondTransition <span class="token punctuation">(</span>param<span class="token punctuation">_</span>1<span class="token punctuation">:</span> type<span class="token punctuation">_</span>1<span class="token punctuation">)</span>
+  <span class="token comment">(* Transition body *)</span>
+
+<span class="token keyword">end</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/Laksa-docs/assets/js/10.b9e88e6c.js" defer></script><script src="/Laksa-docs/assets/js/app.4cf301fb.js" defer></script>
+  </body>
+</html>
