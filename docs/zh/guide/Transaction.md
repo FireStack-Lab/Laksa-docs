@@ -167,3 +167,30 @@ myAccount
 包含 `REJECTED` 或者 `SUCCESS`，这里`REJECTED`对应着`success:false`，而`SUCCESS`显然对应着`success:true`
 
 如果 Transaction 发送了，而没有被最终区块链所接受，则`SENT`的状态将维持不变。
+
+### 5. 小结一下
+
+整个交易过程并不难理解，它总是依照以下顺序发生:
+
+1. **构造**
+
+   使用 `laksa.transactions.new` 初始化，构造交易对象
+
+   Transaction Status:Initialized
+
+2. **签名**
+
+   使用 `account.signTransaction` 进行签名, 传入签名所指定的 account 和 password（如果必要的话）
+   Transaction Status:Signed
+
+3. **发送**
+
+   使用 `Transaction.send` 发送, 如果正常，则会返回 {transaction:Transaction,response:Response}
+
+   Transaction Status:Sent
+
+4. **确认**
+
+   使用 `Transaction.confirm` 进行确认, 使用`TranID`作为参数, 如果交易单被区块链所接受, 回执(receipt)将会返回
+
+   Transaction Status:Success / Rejected

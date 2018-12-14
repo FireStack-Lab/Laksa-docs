@@ -166,3 +166,31 @@ And if the Transaction is confirmed by `confirm` method, it will also changed th
 With `REJECTED` or `SUCCESS`, here `REJECTED` means `success:false`, and `SUCCESS` means `success:true` apparently.
 
 But the Transaction is not accepted, the status will be remain `SENT`
+
+### 5. Sum it up
+
+The Transaction process is not hard to understand. It is always follows:
+
+1. **Construct**
+
+   use `laksa.transactions.new` to initialize
+
+   Transaction Status:Initialized
+
+2. **Sign**
+
+   use `account.signTransaction` to sign, signing signer account and password if necessary
+
+   Transaction Status:Signed
+
+3. **Send**
+
+   use `Transaction.send` to send, it will return {transaction:Transaction,response:Response}
+
+   Transaction Status:Sent
+
+4. **Confirm**
+
+   use `Transaction.confirm` to confirm, send the `TranID` as paremater, if it is appeared on the Blockchain, the receipt will return
+
+   Transaction Status:Success / Rejected
